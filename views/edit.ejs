@@ -1,0 +1,29 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container lh-1 py-3">
+  <h2>Edit Post</h2>
+  <form action="/edit" method="POST" class="mb-5">
+    <!-- Hidden input to track which post we are editing -->
+    <input type="hidden" name="id" value="<%= post.id %>">
+    
+    <div class="mb-3">
+      <label>Post ID: <%= post.id %></label>
+    </div>
+    
+    <div class="mb-3">
+        <input type="text" class="form-control custom-input" name="category" value="<%= post.category || '' %>" placeholder="Category" >
+    </div>
+
+    <div class="mb-3">
+        <input type="text" class="form-control custom-input" name="title" value="<%= post.title %>" placeholder="Post Title" required>
+    </div>
+
+    <div class="mb-3">
+        <textarea class="form-control custom-input" name="body" rows="5" placeholder="Content" required><%= post.body %></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-outline-primary rounded-pill">Update Post</button>
+  </form>
+</div>
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,71 @@
+<%- include("partials/header.ejs") %>
+<div class="container">
+<% if(posts.length > 0){ %>
+    <div class="row mb-2">
+        <% for(let i = 0; i < posts.length; i++){ %>
+                <div class="col-md-6"> 
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"> 
+                        <div class="col p-4 d-flex flex-column position-static"> 
+                            <strong class="d-inline-block mb-2 text-primary-emphasis"><%= posts[i].id %></strong> 
+                            <h3 class="mb-0"><%= posts[i].title %></h3> 
+                            <p class="card-text mb-auto"><%= posts[i].body %></p> 
+                        </div> 
+                    </div> 
+                </div>  
+        <% } %> 
+    </div> 
+</div>
+<% } else{ %>
+    <div class = "container fst-italic">
+        <h1> No posts created! </h1>
+    </div>
+<% } %>    
+
+<div class="container lh-1 py-3">
+    <form action="/create" method="POST" class="mb-5">
+        <h2>Create New Post</h2>
+    
+        <div class="mb-3">
+            <input type="number" class="form-control custom-input" name="number" placeholder="Post Number" required>
+        </div>
+        
+        <div class="mb-3">
+            <input type="text" class="form-control custom-input" name="title" placeholder="Post Title" required>
+        </div>
+    
+        <div class="mb-3">
+            <textarea class="form-control custom-input" name="body" placeholder="Write your post here..." rows="5" required></textarea>
+        </div>
+    
+        <button type="submit" class="btn btn-outline-primary rounded-pill">Create New Post</button>
+    </form>
+    
+    <% if(posts.length > 0){ %>
+        <div class="row mb-2">
+            <div class="col-md-6"> 
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"> 
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <form action="/check-edit" method="POST">
+                                <h4>Enter the post number to edit</h4>
+                                <input type="number" name="id" required class="custom-input" placeholder="Post Number">
+                                <button type="submit" class="btn btn-outline-primary rounded-pill mt-2">Edit Post</button>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-6"> 
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"> 
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <form action="/delete" method="POST">
+                                <h4> Enter the post number to delete</h4>
+                                <input type="number" name="id" required class=" custom-input" placeholder="Post Number">
+                                <button type="submit" class="btn btn-outline-primary rounded-pill">Delete Post</button>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+<%- include("partials/footer.ejs") %>

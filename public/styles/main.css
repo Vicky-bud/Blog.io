@@ -1,0 +1,28 @@
+.btn {
+  color: black;
+}
+
+/* Override for btn-outline-primary */
+.btn-outline-primary {
+  --bs-btn-color: black;
+  --bs-btn-border-color: black;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: black;
+  --bs-btn-hover-border-color: black;
+  --bs-btn-focus-shadow-rgb: 108, 92, 231;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: black;
+  --bs-btn-active-border-color: black;
+}
+
+.custom-input {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 15px;
+}
+
+/* Change the focus glow to match existing theme */
+.custom-input:focus {
+  border-color: black;
+  box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.1);
+}
